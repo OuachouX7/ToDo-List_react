@@ -1,0 +1,105 @@
+#root{
+    width: auto;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    background-color: #262626;
+}
+.heading{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+
+    .ficon{
+        width: 22px;
+        height: 36px;
+    }
+    h1{
+        margin: 0 10px;
+        color: white;
+    }
+}
+.inpt-container{
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    input{
+        background: #333333;
+        width: 638px;
+        height: 24px;
+        padding: 16px;
+        gap: 8px;
+        border-radius: 8px;
+        border: 1px;
+    }
+    button{
+        width: 90px;
+        height: 55px;
+        padding: 16px;
+        margin-left: 10px;
+        gap: 8px;
+        border-radius: 8px;
+        background: #1E6F9F;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+.count-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .count{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    border-bottom: 1px solid #333333;
+        p{
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 16.94px;
+            text-align: left;
+            color: #4EA8DE;
+        }
+        span{
+            background: #333333;
+            padding: 2px 8px 2px 8px;
+            gap: 10px;
+            border-radius: 999px;
+            color: white;
+            margin-left: 5px;
+        }
+    }
+}
+.tasks-container{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .task-container{
+        width: 70%;
+        margin: 5px 0;
+        display: flex;
+        justify-content: space-around;
+        background-color: #333333;
+        padding: 16px;
+        gap: 12px;
+        border-radius: 8px;
+        border: 1px;
+        button{
+            background-color: transparent;
+            border: none;
+        }
+        span{
+            color: white;
+        }
+    }
+}
+.checked{
+    text-decoration: line-through;
+}
