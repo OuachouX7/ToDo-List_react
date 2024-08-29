@@ -10,32 +10,54 @@ gsap.registerPlugin(useGSAP);
 
 function ToDo(){
     var [Tasks,setTasks] = useState([]);
+    var [newTask,setnewTask] = useState('');
     var [Cnt,setCnt] = useState(0);
-    
-    const add = () => {
-        var Task = document.getElementById('Task');
-        var newTask = Task.value;
-        
-        setTasks(t => [...t,newTask]);
-        setCnt(Cnt => Cnt + 1);
 
+    const handleInput = (e) => {
+        setnewTask(e.target.value);
+    }
+
+    const add = () => {
+        
+        if(newTask.trim() !== ''){
+            
+            setTasks(t => [...t,newTask]);
+            setCnt(Cnt => Cnt + 1);
+
+        }else{
+            alert('you must write something !!!!!!!!!!!!')
+        }
+        
+        
     }
     useGSAP(() => {
-        gsap.to("#animate",{
-            x : 30
-        })
+        
 
-    }
+            gsap.fromTo(".task-container",{
+                x : -1330,
+                y:0,
+                opacity : 0,
+                duration : 1
+            },{
+                x : 0,
+                y : 0,
+                opacity : 1,
+                duration : 1
+            })
+    
+        
+        }
 
 )
 
     const remove = () => {
         let trash = document.getElementById('trash');
         trash.parentElement.remove();
+        setCnt(Cnt => Cnt - 1);
     }
 
-    const handleCheck = () => {
-        let check = document.getElementById('check');
+    const handleCheck = (e) => {
+        let check = e.target;
         let next = check.nextElementSibling;
         next.classList.toggle('checked');
     }
@@ -47,7 +69,7 @@ function ToDo(){
                 <h1>ToDo List</h1>
             </div>
             <div className="inpt-container">
-                <input type="text" id="Task" placeholder="Add New Task..."/>
+                <input type="text" id="Task"  onChange={handleInput} placeholder="Add New Task..."/>
                 <button id="Add" onClick={add}>
                     <p>Create</p>
                     <img src={logo2} alt="" />
@@ -65,7 +87,7 @@ function ToDo(){
             <div className="tasks-container">
                 {Tasks.map(Task => <div className="task-container" id="animate"> 
                                        <input type="checkbox" id="check" onClick={handleCheck}/>
-                                       <span className="span">{Task}</span>
+                                       <span className="span" key={Task}>{Task}</span>
                                        <button onClick={remove} id="trash">
                                         <img src={logo3} alt="" />
                                        </button>
